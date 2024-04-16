@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category }} Recipes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ category }} Recipes</h1>
+        <div class="buttons">
+            <a href="/list_categories" class="button">Back to Categories</a>
+        </div>
+    </header>
+    <div class="recipes">
+        {% if meals %}
+            {% for meal in meals['meals'] %}
+                <div class="recipe">
+                    <a href="{{ url_for('recipe_details', meal_id=meal['idMeal']) }}">
+                        <h2>{{ meal['strMeal'] }}</h2>
+                    </a>
+                    <div class="recipe-image">
+                        <img src="{{ meal['strMealThumb'] }}" alt="{{ meal['strMeal'] }}">
+                    </div>
+                    <div class="recipe-info">
+                        <p><strong>Category:</strong> {{ category }}</p>
+                        <p><strong>Meal ID:</strong> {{ meal['idMeal'] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No recipes found for this category.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
