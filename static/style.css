@@ -25,7 +25,7 @@ h2 {
 .website-description {
     max-width: 800px; /* Set maximum width for the paragraph */
     margin: 0 auto; /* Center the paragraph horizontally */
-    margin-left: 350px;
+    margin-left: 300px;
     text-align: center; /* Center the text within the paragraph */
 }
 
