@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Recipe Details</h1>
+        <div class="buttons">
+            <a href="/" class="button">Home</a>
+        </div>
+    </header>
+    <main>
+        <div class="recipe-details">
+            <h2>{{ recipe['strMeal'] }}</h2>
+            <div class="recipe-image">
+                <img src="{{ recipe['strMealThumb'] }}" alt="{{ recipe['strMeal'] }}">
+            </div>
+            <div class="recipe-info">
+                <p><strong>Category:</strong> {{ recipe['strCategory'] }}</p>
+                <p><strong>Area:</strong> {{ recipe['strArea'] }}</p>
+                <p><strong>Tags:</strong> {{ recipe['strTags'] }}</p>
+                <p><strong>Ingredients:</strong></p>
+                <ul>
+                    {% for i in range(1, 21) %}
+                        {% set ingredient_key = 'strIngredient' ~ i %}
+                        {% set measure_key = 'strMeasure' ~ i %}
+                        {% if recipe[ingredient_key] %}
+                            <li>{{ recipe[measure_key] }} {{ recipe[ingredient_key] }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <p><strong>Instructions:</strong></p>
+                <p>{{ recipe['strInstructions'] }}</p>
+                {% if recipe['strYoutube'] %}
+                    <p><strong>Watch on YouTube:</strong> <a href="{{ recipe['strYoutube'] }}" target="_blank">Video Link</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>
