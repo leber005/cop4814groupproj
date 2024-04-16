@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See All Categories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>See All Categories</h1>
+        <div class="buttons">
+            <a href="/" class="button">Back to Home</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="category-list">
+            {% for category in categories %}
+            <div class="category">
+                <button class="category-button" onclick="loadCategoryRecipes('{{ category }}')">{{ category }}</button>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <script>
+    function loadCategoryRecipes(category) {
+        const jsonFileName = `${encodeURIComponent(category)}_Meals.json`;
+        window.location.href = `/category/${jsonFileName}`;
+    }
+    </script>
+
+</body>
+</html>
