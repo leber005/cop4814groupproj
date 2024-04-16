@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search for Recipes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='additional.css') }}"> <!-- Include the additional CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Flavor Haven</h1> <!-- Website header -->
+        <h2>Our Recipe Collection</h2> <!-- Subtitle with names -->
+    </header>
+
+    <!-- Sidebar for search buttons -->
+    <aside class="sidebar">
+        <h3>Search Recipes</h3> <!-- Sidebar header -->
+        <form>
+            <button class="button" onclick="location.href='/list_by_first_letter'; return false;">See Recipes Alphabetically</button>
+            <button class="button" onclick="location.href='/list_categories'; return false;">See All Categories</button>
+        </form>
+        <div class="sidebar-footer">
+            <p class="small-text">COP4814 - Group 6</p> <!-- COP4814 header -->
+            <p class="small-text">Leah Ebert, Charbel Abboud, Fernando Galvis, Christian Medina</p> <!-- List of names -->
+        </div>
+    </aside>
+
+    <!-- Website description -->
+    <section class="website-description">
+        <p>Welcome to Flavor Haven, your ultimate destination for culinary inspiration and gastronomic delight! At Flavor Haven, we believe that cooking is not just about following a recipe; it's about embracing the artistry of flavors, the joy of creation, and the love of sharing delicious meals with loved ones.</p>
+        <p>Dive into our extensive collection of mouthwatering recipes curated from around the globe, spanning from classic comfort foods to innovative fusion dishes. Whether you're a seasoned chef or a novice cook, our user-friendly interface and step-by-step instructions ensure that every dish you prepare is a masterpiece.</p>
+        <p>Unleash your culinary creativity with our handy tips, techniques, and kitchen hacks shared by our team of seasoned chefs and food enthusiasts. Discover the secrets to perfecting your favorite dishes and learn new culinary skills to impress your guests and elevate your cooking prowess.</p>
+        <p>So, whether you're seeking weekday dinner inspiration, planning a festive feast, or simply craving a sweet indulgence, let Flavor Haven be your trusted companion on your culinary journey. Let's savor the flavors of life together!</p>
+        <p><a href="https://www.themealdb.com/api.php">API Source</a></p>
+    </section>
+
+    <!-- Display the random recipe -->
+    <div class="try-me">
+        <h2>Try Me!</h2>
+        <a href="/recipe/{{ random_recipe.idMeal }}">
+            <button class="recipe-btn">{{ random_recipe.strMeal }}</button>
+            <img src="{{ random_recipe.strMealThumb }}" alt="{{ random_recipe.strMeal }}">
+        </a>
+    </div>
+</body>
+</html>
